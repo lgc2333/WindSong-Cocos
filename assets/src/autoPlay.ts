@@ -67,10 +67,12 @@ async function keyPress(keys: Array<KeyCode | string>) {
       const keysObj = keys.map((i) => keyMap.get(i));
       for (let k of keysObj) {
         k.down();
-        await asyncSleep(pressTime);
-        k.up();
-        await asyncSleep(delayTime);
       }
+      await asyncSleep(pressTime);
+      for (let k of keysObj) {
+        k.up();
+      }
+      await asyncSleep(delayTime);
       break;
   }
 }
