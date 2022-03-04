@@ -1,5 +1,4 @@
 import {
-  _decorator,
   Component,
   Input,
   AudioSource,
@@ -8,7 +7,6 @@ import {
   AnimationComponent,
   input,
 } from 'cc';
-const { property } = _decorator;
 import { keyMap, playing } from './autoPlay';
 import { genCircle } from './keyCircle';
 import { showTip } from './Tip';

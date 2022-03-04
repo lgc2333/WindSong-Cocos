@@ -50,7 +50,7 @@ async function keyPress(keys: Array<KeyCode | string>) {
   if (trueDelay !== pressTime) {
     trueDelay > pressTime
       ? (delayTime = trueDelay - pressTime)
-      : (pressTime = pressTime - trueDelay);
+      : (pressTime = trueDelay);
   }
 
   switch (keys[0]) {
@@ -63,22 +63,24 @@ async function keyPress(keys: Array<KeyCode | string>) {
     case ' ':
       await asyncSleep(pressTime + delayTime);
       break;
-    default:
+    default: {
+      // log(`trueDelay:${trueDelay}, pressTime: ${pressTime}, delayTime:${delayTime}, speed:${speed}`)
       const keysObj = keys.map((i) => keyMap.get(i));
-      for (let k of keysObj) {
+      for (const k of keysObj) {
         k.down();
       }
       await asyncSleep(pressTime);
-      for (let k of keysObj) {
+      for (const k of keysObj) {
         k.up();
       }
       await asyncSleep(delayTime);
       break;
+    }
   }
 }
 
 function asyncSleep(time: number) {
-  return new Promise((resolve, _) => setTimeout(resolve, time));
+  return new Promise((resolve, reject) => setTimeout(resolve, time));
 }
 
 function parseKeys(keys: string) {
@@ -87,39 +89,39 @@ function parseKeys(keys: string) {
   let i = 0;
   let together = false;
 
-  //统一换行符
+  // 统一换行符
   keys = keys.replace(/\r\n/g, '\n');
   keys = keys.replace(/\r/g, '\n');
 
-  for (let orgKey of keys) {
+  for (const orgKey of keys) {
     i++;
     const k = orgKey.toLowerCase();
     if (k === '(') {
-      //同时弹奏开始
+      // 同时弹奏开始
       if (!together) {
         together = true;
       } else {
         throw new SyntaxError(`多余的 "${orgKey}" 在第 ${i} 个字符`);
       }
     } else if (k === ')') {
-      //同时弹奏结束
+      // 同时弹奏结束
       if (together) {
         together = false;
       } else {
         throw new SyntaxError(`多余的 "${orgKey}" 在第 ${i} 个字符`);
       }
     } else if (keyCodeMap.has(k)) {
-      //已有键
+      // 已有键
       tmpLi.push(keyCodeMap.get(k));
     } else if (['+', '-', ' '].indexOf(k) !== -1) {
-      //控制符
+      // 控制符
       if (!together) {
         tmpLi.push(k);
       } else {
         throw new SyntaxError(`多余的 ${orgKey} 在第 ${i} 个字符`);
       }
     } else if (k === '\n') {
-      //换行符双次停顿
+      // 换行符双次停顿
       if (!together) {
         keyList.push([' '], [' ']);
       } else {
@@ -133,7 +135,7 @@ function parseKeys(keys: string) {
     }
 
     if (!together) {
-      keyList.push(tmpLi.slice()); //列表为引用，需要复制数组，不然出bug
+      keyList.push(tmpLi.slice()); // 列表为引用，需要复制数组，不然出bug
       tmpLi.length = 0;
     }
   }
@@ -151,7 +153,7 @@ async function playKeyMap() {
 
   speed = 1.0;
   playing = true;
-  for (let k of p) {
+  for (const k of p) {
     if (playing) {
       await keyPress(k);
     } else {
@@ -206,6 +208,7 @@ export class Key extends Component {
   start() {
     input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
   }
+
   onKeyDown(event: EventKeyboard) {
     switch (event.keyCode) {
       case KeyCode.KEY_O:
