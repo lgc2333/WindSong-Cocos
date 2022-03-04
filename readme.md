@@ -1,5 +1,7 @@
 # WindSong-Cocos
 
+[![wakatime](https://wakatime.com/badge/user/b61b0f9a-f40b-4c82-bc51-0a75c67bfccf/project/f9fdd923-d1a1-4075-8637-d05dc033a641.svg)](https://wakatime.com/badge/user/b61b0f9a-f40b-4c82-bc51-0a75c67bfccf/project/f9fdd923-d1a1-4075-8637-d05dc033a641) [![CodeFactor](https://www.codefactor.io/repository/github/lgc2333/windsong-cocos/badge)](https://www.codefactor.io/repository/github/lgc2333/windsong-cocos)
+
 Cocos Creator仿原神风物之诗琴
 
 初试水，写了一堆屎山
