@@ -8,9 +8,7 @@ Cocos Creator仿原神风物之诗琴
 
 ## 视频介绍
 
-<div>
-  <iframe src="//player.bilibili.com/player.html?aid=724526860&bvid=BV1RS4y167PA&cid=541829289&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
+<https://www.bilibili.com/video/BV1RS4y167PA?share_source=copy_web>
 
 ## 游玩指引
 
