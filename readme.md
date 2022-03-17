@@ -6,6 +6,10 @@ Cocos Creator仿原神风物之诗琴
 
 初试水，写了一堆屎山
 
+## 视频介绍
+
+<iframe src="//player.bilibili.com/player.html?aid=724526860&bvid=BV1RS4y167PA&cid=541829289&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ## 游玩指引
 
 - 键盘按键
@@ -24,7 +28,7 @@ Cocos Creator仿原神风物之诗琴
 
 ## 游玩方式
 
-- [我编译的Web桌面端](http://stu.bugmc.com:520/windsong-cocos)
+- [我编译的Web手机端](http://stu.bugmc.com:520/windsong-cocos)
 - 你也可以使用Cocos Creator 3.4.1自己构建
 
 ## 示例琴谱
